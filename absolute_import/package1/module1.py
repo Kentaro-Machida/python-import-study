@@ -3,13 +3,16 @@ import package2.package2_1.module2_1
 import module0  # 階層が上のモジュールでも絶対パスでimportできる
 
 # エラーが発生するimport
-# import module2  絶対パスの起点がabsolute_importであるため、module2はimportできない
+# 絶対パスの起点がabsolute_importであるため、module2はimportできない
+# import module2  
+# 絶対パスの起点からその配下のモジュールを全て探索するわけではないため、module2_2はimportできない
+# import module2_2 
 
 def func_1(called_from: str):
     print(f'{__name__}.func_1 is called from {called_from}')
     module0.func_0(called_from=__name__)
     package2.module2.func_2(called_from=__name__)
-    package2.package2_1.module2_1.func_2_2(called_from=__name__)
+    package2.package2_1.module2_1.func_2_1(called_from=__name__)
 
 if __name__ == '__main__':
     """
